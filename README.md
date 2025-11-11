@@ -70,6 +70,3 @@ cd client
 npm install
 npm start
 ```
-
-
-**⚠️ Disclaimer:** Experimental software. Use at your own risk. Always test on testnet first.
