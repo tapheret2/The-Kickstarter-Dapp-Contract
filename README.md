@@ -26,11 +26,6 @@ A **decentralized crowdfunding platform** built with **Solidity**, powered by a 
 
 ---
 
-## Live Demo (Coming Soon)
-
-> [Live Demo - Vercel](https://kickstarter-dapp.vercel.app) *(will be updated after deployment)*
-
----
 
 ## Tech Stack
 
