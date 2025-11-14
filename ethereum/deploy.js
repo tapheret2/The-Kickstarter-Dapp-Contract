@@ -2,10 +2,9 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 const { Web3 } = require("web3");
 const compiledFactory = require("./build/CampaignFactory.json");
 
-const provider = new HDWalletProvider(
-  "CHANGE TO YOUR MNEMONIC PHRASE",
-  "CHANGE TO YOUR SEPOLIA URL"
-);
+const provider=new HDWalletProvider(
+    'decrease bench buzz verify table educate under sport donkey answer sort chimney',
+    'https://sepolia.infura.io/v3/f9333858fd6b4fab97f28679c8972c12');
 
 const web3 = new Web3(provider);
 
