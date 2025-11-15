@@ -23,7 +23,6 @@
 - [Project Structure](#project-structure)
 - [Testing](#testing)
 - [Deployment](#deployment)
-- [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -465,47 +464,6 @@ const instance = new web3.eth.Contract(
 
 ---
 
-## Roadmap
-
-### Phase 1: Foundation (Completed ✅)
-
-- [x] Smart contract architecture
-- [x] Factory pattern implementation
-- [x] Core campaign functionality
-- [x] Voting mechanism
-- [x] Frontend development
-- [x] MetaMask integration
-- [x] Testnet deployment
-
-### Phase 2: Enhancement (In Progress 🚧)
-
-- [ ] UI/UX improvements
-- [ ] Responsive design optimization
-- [ ] Campaign categorization
-- [ ] Search and filter functionality
-- [ ] IPFS integration for images
-- [ ] Campaign updates feature
-
-### Phase 3: Advanced Features (Planned 📅)
-
-- [ ] Multi-signature wallet integration
-- [ ] Milestone-based funding
-- [ ] Refund mechanism for failed campaigns
-- [ ] ERC-20 token rewards for contributors
-- [ ] Campaign analytics dashboard
-- [ ] Email notification system
-- [ ] Social media integration
-
-### Phase 4: Scaling (Future 🔮)
-
-- [ ] Mainnet deployment
-- [ ] Layer 2 scaling solution
-- [ ] Mobile application (React Native)
-- [ ] API for third-party integrations
-- [ ] Governance token
-- [ ] DAO structure for platform governance
-
----
 
 ## Contributing
 
