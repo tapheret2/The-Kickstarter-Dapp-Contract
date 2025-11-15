@@ -7,12 +7,16 @@ import {Router} from '../routes';
 class ContributeForm extends Component {
   state = {
     value: "",
+    errorMessage: '',
+    loading: false
   };
 
   onSubmit = async (event) => {
     event.preventDefault();
 
     const campaign = Campaign(this.props.address);
+
+    this.setState({loading:true});
 
     try {
       const accounts = await web3.eth.getAccounts();
@@ -22,7 +26,11 @@ class ContributeForm extends Component {
       });
 
       Router.replaceRoute(`/campaigns/${this.props.address}`)
-    } catch (err) {}
+    } catch (err) {
+        this.setState({errorMessage:err.massge});
+    }
+
+    this.setState({loading:false,value: ''});
   };
 
   render() {
@@ -37,7 +45,7 @@ class ContributeForm extends Component {
             labelPosition="right"
           />
         </Form.Field>
-        <Button primary>Contribute!</Button>
+        <Button primary loading={this.state.loading}>Contribute!</Button>
       </Form>
     );
   }
