@@ -5,7 +5,6 @@
 [![Next.js](https://img.shields.io/badge/Next.js-12.3.7-black?logo=next.js&logoColor=white&style=flat)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-17.0.2-61DAFB?logo=react&logoColor=white&style=flat)](https://reactjs.org/)
 [![Web3.js](https://img.shields.io/badge/Web3.js-4.9.0-orange?logo=web3.js&logoColor=white&style=flat)](https://web3js.org/)
-[![License](https://img.shields.io/badge/License-ISC-green?style=flat)](LICENSE)
 
 > A decentralized crowdfunding platform built on Ethereum blockchain. Campaign managers create fundraising initiatives, contributors donate ETH and participate in democratic voting for all spending decisions.
 
@@ -516,12 +515,6 @@ For current issues, visit the [Issues](https://github.com/tapheret2/The-Kickstar
 - Review all transactions before confirming
 
 **Recommendation**: Conduct professional security audit before mainnet deployment.
-
----
-
-## License
-
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
