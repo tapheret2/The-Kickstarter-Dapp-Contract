@@ -33,24 +33,37 @@ class CampaignNew extends Component {
   render() {
     return (
       <Layout>
-        <h3>Create Campaign</h3>
-        <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
-          <Form.Field>
-            <label>Minimum Contribution</label>
-            <Input
-              label="wei"
-              labelPosition="right"
-              value={this.state.minimumContribution}
-              onChange={(event) =>
-                this.setState({ minimumContribution: event.target.value })
-              }
-            />
-          </Form.Field>
-          <Message error header="Oops!" content={this.state.errorMessage} />
-          <Button loading={this.state.loading} primary>
-            Create!
-          </Button>
-        </Form>
+        <div className="page-content">
+          <div className="section-header">
+            <div>
+              <h3 style={{ marginBottom: 4 }}>Create a new campaign</h3>
+              <p className="page-subtitle">
+                Define the minimum contribution required to join your project as an approver.
+              </p>
+            </div>
+          </div>
+
+          <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
+            <Form.Field>
+              <label>Minimum Contribution</label>
+              <Input
+                icon="ethereum"
+                iconPosition="left"
+                label="wei"
+                labelPosition="right"
+                value={this.state.minimumContribution}
+                onChange={(event) =>
+                  this.setState({ minimumContribution: event.target.value })
+                }
+                placeholder="e.g. 100"
+              />
+            </Form.Field>
+            <Message error header="Oops!" content={this.state.errorMessage} />
+            <Button loading={this.state.loading} primary>
+              Create campaign
+            </Button>
+          </Form>
+        </div>
       </Layout>
     );
   }

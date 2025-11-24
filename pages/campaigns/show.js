@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Card, Grid, Button } from "semantic-ui-react";
+import { Card, Grid, Button, Icon } from "semantic-ui-react";
 import Layout from "../../components/Layout";
 import Campaign from "../../ethereum/campaign";
 import web3 from "../../ethereum/web3";
 import ContributeForm from "../../components/ContributeForm";
-import {Link} from '../../routes';
+import { Link } from "../../routes";
 
 class CampaignShow extends Component {
   static async getInitialProps(props) {
@@ -71,29 +71,59 @@ class CampaignShow extends Component {
   render() {
     return (
       <Layout>
-        <h3>Campaign Show</h3>
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={10}>
-              {this.renderCards()}
-              
-            </Grid.Column>
+        <div className="page-content">
+          <div className="section-header">
+            <div>
+              <h3 style={{ marginBottom: 4 }}>Campaign overview</h3>
+              <p className="page-subtitle">
+                A transparent snapshot of this campaign&apos;s manager, balance, and contributors.
+              </p>
+            </div>
+            <Link route={`/campaigns/${this.props.address}/requests`}>
+              <a>
+                <Button color="black" icon labelPosition="right" basic>
+                  Manage requests
+                  <Icon name="arrow right" />
+                </Button>
+              </a>
+            </Link>
+          </div>
 
-            <Grid.Column width={6}>
-              <ContributeForm address={this.props.address} />
-            </Grid.Column>
-          </Grid.Row>
+          <Grid stackable columns={2}>
+            <Grid.Row>
+              <Grid.Column width={10}>{this.renderCards()}</Grid.Column>
 
-          <Grid.Row>
-            <Grid.Column>
-              <Link route={`/campaigns/${this.props.address}/requests`}>
-                  <a>
-                    <Button primary>View Requests</Button>
-                  </a>
-              </Link>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+              <Grid.Column width={6}>
+                <div className="panel">
+                  <div className="panel-header">Contribute</div>
+                  <p className="panel-copy">Back this project and become an approver for future spending.</p>
+                  <ContributeForm address={this.props.address} />
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </div>
+        <style jsx>{`
+          .panel {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 18px;
+            border-radius: 14px;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+          }
+
+          .panel-header {
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+          }
+
+          .panel-copy {
+            margin-top: 0;
+            margin-bottom: 14px;
+            color: #cbd5e1;
+          }
+        `}</style>
       </Layout>
     );
   }

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Form, Input, Message, Button } from "semantic-ui-react";
 import Campaign from "../ethereum/campaign";
 import web3 from "../ethereum/web3";
-import {Router} from '../routes';
+import { Router } from "../routes";
 
 class ContributeForm extends Component {
   state = {
     value: "",
-    errorMessage: '',
+    errorMessage: "",
     loading: false
   };
 
@@ -16,7 +16,7 @@ class ContributeForm extends Component {
 
     const campaign = Campaign(this.props.address);
 
-    this.setState({loading:true, errorMessage:''});
+    this.setState({ loading: true, errorMessage: "" });
 
     try {
       const accounts = await web3.eth.getAccounts();
@@ -27,10 +27,10 @@ class ContributeForm extends Component {
 
       Router.replaceRoute(`/campaigns/${this.props.address}`)
     } catch (err) {
-        this.setState({errorMessage:err.massge});
+      this.setState({ errorMessage: err.message });
     }
 
-    this.setState({loading:false,value: ''});
+    this.setState({ loading: false, value: "" });
   };
 
   render() {
@@ -43,6 +43,9 @@ class ContributeForm extends Component {
             onChange={(event) => this.setState({ value: event.target.value })}
             label="ether"
             labelPosition="right"
+            icon="rocket"
+            iconPosition="left"
+            placeholder="0.1"
           />
         </Form.Field>
 
