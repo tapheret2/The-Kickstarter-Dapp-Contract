@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Card, Grid, Button } from "semantic-ui-react";
+import { Card, Grid, Button, Icon } from "semantic-ui-react";
 import Layout from "../../components/Layout";
 import Campaign from "../../ethereum/campaign";
 import web3 from "../../ethereum/web3";
 import ContributeForm from "../../components/ContributeForm";
-import {Link} from '../../routes';
+import { Link } from "../../routes";
 
 class CampaignShow extends Component {
   static async getInitialProps(props) {
@@ -40,60 +40,78 @@ class CampaignShow extends Component {
         style: { overflowWrap: "break-word" },
       },
       {
-        header: minimumContribution,
-        meta: "Minimum Contribution (wei)",
+        header: `${web3.utils.fromWei(minimumContribution, "ether")} ETH`,
+        meta: "Minimum Contribution",
         description:
-          "You must contribute at least this much wei to become an approver",
+          "You must contribute at least this much to become an approver",
       },
       {
         header: requestsCount,
-        meta: "Number of Requests",
+        meta: "Requests",
         description:
-          "A request tries to withdraw money from the contract. Requests must be approved by approvers",
+          "Each request withdraws funds after majority approval",
       },
       {
         header: approversCount,
-        meta: "Number of Approvers",
+        meta: "Approvers",
         description:
-          "Number of people who have already donated to this campaign",
+          "People who have already backed this campaign",
       },
       {
-        header: web3.utils.fromWei(balance, "ether"),
-        meta: "Campaign Balance (ether)",
+        header: `${web3.utils.fromWei(balance, "ether")} ETH`,
+        meta: "Campaign Balance",
         description:
-          "The balance is how much money this campaign has left to spend.",
+          "Funds available for spending by approved requests",
       },
     ];
 
-    return <Card.Group items={items} />;
+    return <Card.Group items={items} itemsPerRow={2} stackable />;
   }
 
   render() {
     return (
       <Layout>
-        <h3>Campaign Show</h3>
-        <Grid>
+        <div className="panel-header">
+          <h3>Campaign Overview</h3>
+          <div className="address-pill">
+            <Icon name="ethereum" />
+            {this.props.address}
+          </div>
+        </div>
+
+        <Grid stackable columns={2} divided>
           <Grid.Row>
             <Grid.Column width={10}>
               {this.renderCards()}
-              
             </Grid.Column>
 
             <Grid.Column width={6}>
-              <ContributeForm address={this.props.address} />
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-            <Grid.Column>
-              <Link route={`/campaigns/${this.props.address}/requests`}>
-                  <a>
-                    <Button primary>View Requests</Button>
-                  </a>
-              </Link>
+              <div className="form-panel">
+                <div className="section-title" style={{ margin: 0 }}>
+                  <span className="pill">Support</span>
+                  <span>Contribute</span>
+                </div>
+                <p className="helper-text">
+                  Become an approver by contributing above the minimum. You will be
+                  able to vote on spending requests.
+                </p>
+                <ContributeForm address={this.props.address} />
+              </div>
             </Grid.Column>
           </Grid.Row>
         </Grid>
+
+        <div className="panel-header" style={{ marginTop: 28 }}>
+          <h3>Requests</h3>
+          <Link route={`/campaigns/${this.props.address}/requests`}>
+            <a>
+              <Button primary icon labelPosition="left">
+                <Icon name="arrow right" />
+                View Requests
+              </Button>
+            </a>
+          </Link>
+        </div>
       </Layout>
     );
   }

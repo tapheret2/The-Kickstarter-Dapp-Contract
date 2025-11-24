@@ -27,7 +27,7 @@ class ContributeForm extends Component {
 
       Router.replaceRoute(`/campaigns/${this.props.address}`)
     } catch (err) {
-        this.setState({errorMessage:err.massge});
+        this.setState({errorMessage:err.message});
     }
 
     this.setState({loading:false,value: ''});
@@ -42,12 +42,15 @@ class ContributeForm extends Component {
             value={this.state.value}
             onChange={(event) => this.setState({ value: event.target.value })}
             label="ether"
+            placeholder="0.05"
             labelPosition="right"
+            fluid
           />
+          <div className="helper-text">Enter an amount above the minimum to earn voting power.</div>
         </Form.Field>
 
         <Message error header='Oops!' content={this.state.errorMessage} />
-        <Button primary loading={this.state.loading}>Contribute!</Button>
+        <Button fluid primary loading={this.state.loading}>Contribute</Button>
       </Form>
     );
   }

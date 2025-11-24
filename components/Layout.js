@@ -5,16 +5,26 @@ import Header from "./Header";
 
 const Layout = (props) => {
   return (
-    <div>
+    <div className="main-shell">
+      <Head>
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <title>CrowdCoin</title>
+      </Head>
       <Container>
-        <Head>
-          <link
-            rel="stylesheet"
-            href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"
-          ></link>
-        </Head>
         <Header />
-        {props.children}
+        <div className="glass-panel">{props.children}</div>
       </Container>
     </div>
   );

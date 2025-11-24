@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Input, Message } from "semantic-ui-react";
+import { Form, Button, Input, Message, Icon } from "semantic-ui-react";
 import Layout from "../../components/Layout";
 import factory from "../../ethereum/factory";
 import web3 from "../../ethereum/web3";
@@ -33,24 +33,38 @@ class CampaignNew extends Component {
   render() {
     return (
       <Layout>
-        <h3>Create Campaign</h3>
-        <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
-          <Form.Field>
-            <label>Minimum Contribution</label>
-            <Input
-              label="wei"
-              labelPosition="right"
-              value={this.state.minimumContribution}
-              onChange={(event) =>
-                this.setState({ minimumContribution: event.target.value })
-              }
-            />
-          </Form.Field>
-          <Message error header="Oops!" content={this.state.errorMessage} />
-          <Button loading={this.state.loading} primary>
-            Create!
-          </Button>
-        </Form>
+        <div className="panel-header">
+          <h3>Launch a Campaign</h3>
+          <Link route="/">
+            <a style={{ color: "#a5f3fc" }}>
+              <Icon name="arrow left" /> Back to campaigns
+            </a>
+          </Link>
+        </div>
+        <div className="form-panel">
+          <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
+            <Form.Field>
+              <label>Minimum Contribution</label>
+              <Input
+                label="wei"
+                labelPosition="right"
+                value={this.state.minimumContribution}
+                placeholder="100"
+                onChange={(event) =>
+                  this.setState({ minimumContribution: event.target.value })
+                }
+                fluid
+              />
+              <div className="helper-text">
+                Contributors must send at least this amount to gain voting rights.
+              </div>
+            </Form.Field>
+            <Message error header="Oops!" content={this.state.errorMessage} />
+            <Button fluid loading={this.state.loading} primary>
+              Create Campaign
+            </Button>
+          </Form>
+        </div>
       </Layout>
     );
   }
