@@ -1,20 +1,25 @@
 import React from "react";
-import { Menu } from "semantic-ui-react";
-import {Link} from "../routes";
+import { Menu, Icon } from "semantic-ui-react";
+import { Link } from "../routes";
 
 const Header = () => {
   return (
-    <Menu style={{ marginTop: "10px" }}>
+    <Menu secondary stackable className="nav-bar">
       <Link route="/">
-      <a className="item">CrowdCoin</a>
+        <a className="item brand">
+          <span className="brand-mark">◎</span>
+          Kickstarter Dapp
+        </a>
       </Link>
 
       <Menu.Menu position="right">
         <Link route="/">
-          <a className="item">Campaigns</a>
+          <a className="item nav-link">Explore Campaigns</a>
         </Link>
         <Link route="/campaigns/new">
-          <a className="item">+</a>
+          <a className="item create-button">
+            <Icon name="add" style={{ marginRight: 8 }} /> Start Campaign
+          </a>
         </Link>
       </Menu.Menu>
     </Menu>

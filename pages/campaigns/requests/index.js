@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Table } from "semantic-ui-react";
+import { Button, Table, Icon, Segment } from "semantic-ui-react";
 import { Link } from "../../../routes";
 import Layout from "../../../components/Layout";
 import Campaign from "../../../ethereum/campaign";
@@ -55,29 +55,45 @@ class RequestIndex extends Component {
 
     return (
       <Layout>
-        <h3>Requests</h3>
+        <div className="page-header">
+          <div className="eyebrow">
+            <Icon name="clipboard check" /> Spending requests
+          </div>
+          <h1>Requests for this campaign</h1>
+          <p className="section-subtitle">
+            Every request must be approved by contributors. Review details
+            carefully before approving or finalizing.
+          </p>
+        </div>
+
         <Link route={`/campaigns/${this.props.address}/requests/new`}>
           <a>
-            <Button primary floated='right' style={{marginBottom:10}}>
+            <Button primary icon labelPosition="right" floated="right" style={{ marginBottom: 16 }}>
               Add Request
+              <Icon name="add" />
             </Button>
           </a>
         </Link>
-        <Table>
-          <Header>
-            <Row>
-              <HeaderCell>ID</HeaderCell>
-              <HeaderCell>Description</HeaderCell>
-              <HeaderCell>Amount</HeaderCell>
-              <HeaderCell>Recipient</HeaderCell>
-              <HeaderCell>Approval Count</HeaderCell>
-              <HeaderCell>Approve</HeaderCell>
-              <HeaderCell>Finalize</HeaderCell>
-            </Row>
-          </Header>
-          <Body>{this.renderRows()}</Body>
-        </Table>
-        <div>Found {this.props.requestCount} requests</div>
+
+        <Segment className="frosted-table">
+          <Table inverted>
+            <Header>
+              <Row>
+                <HeaderCell>ID</HeaderCell>
+                <HeaderCell>Description</HeaderCell>
+                <HeaderCell>Amount</HeaderCell>
+                <HeaderCell>Recipient</HeaderCell>
+                <HeaderCell>Approval Count</HeaderCell>
+                <HeaderCell>Approve</HeaderCell>
+                <HeaderCell>Finalize</HeaderCell>
+              </Row>
+            </Header>
+            <Body>{this.renderRows()}</Body>
+          </Table>
+        </Segment>
+        <div style={{ color: "#cbd5e1", marginTop: 8 }}>
+          Found {this.props.requestCount} request(s)
+        </div>
       </Layout>
     );
   }

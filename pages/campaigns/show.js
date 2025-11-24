@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Card, Grid, Button } from "semantic-ui-react";
+import { Card, Grid, Button, Icon, Segment } from "semantic-ui-react";
 import Layout from "../../components/Layout";
 import Campaign from "../../ethereum/campaign";
 import web3 from "../../ethereum/web3";
 import ContributeForm from "../../components/ContributeForm";
-import {Link} from '../../routes';
+import { Link } from "../../routes";
 
 class CampaignShow extends Component {
   static async getInitialProps(props) {
@@ -71,12 +71,21 @@ class CampaignShow extends Component {
   render() {
     return (
       <Layout>
-        <h3>Campaign Show</h3>
-        <Grid>
+        <div className="page-header">
+          <div className="eyebrow">
+            <Icon name="flag" /> Active campaign
+          </div>
+          <h1>Campaign overview</h1>
+          <p className="section-subtitle">
+            Review the funding details, learn who manages the pool, and back the
+            campaign with a secure contribution.
+          </p>
+        </div>
+
+        <Grid stackable columns={2} relaxed="very">
           <Grid.Row>
             <Grid.Column width={10}>
-              {this.renderCards()}
-              
+              <Segment className="glass-panel">{this.renderCards()}</Segment>
             </Grid.Column>
 
             <Grid.Column width={6}>
@@ -86,11 +95,20 @@ class CampaignShow extends Component {
 
           <Grid.Row>
             <Grid.Column>
-              <Link route={`/campaigns/${this.props.address}/requests`}>
+              <Segment basic style={{ padding: 0 }}>
+                <div className="card-section-header">
+                  <h3 style={{ marginBottom: 0 }}>Manage spending requests</h3>
+                  <span>Track how funds are allocated and vote on approvals.</span>
+                </div>
+                <Link route={`/campaigns/${this.props.address}/requests`}>
                   <a>
-                    <Button primary>View Requests</Button>
+                    <Button primary icon labelPosition="right">
+                      View Requests
+                      <Icon name="arrow right" />
+                    </Button>
                   </a>
-              </Link>
+                </Link>
+              </Segment>
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Form, Button, Input, Message } from "semantic-ui-react";
+import { Form, Button, Input, Message, Icon, Segment } from "semantic-ui-react";
 import Layout from "../../components/Layout";
 import factory from "../../ethereum/factory";
 import web3 from "../../ethereum/web3";
-import {Link,Router} from "../../routes";
+import { Link, Router } from "../../routes";
 
 class CampaignNew extends Component {
   state = {
@@ -33,24 +33,39 @@ class CampaignNew extends Component {
   render() {
     return (
       <Layout>
-        <h3>Create Campaign</h3>
-        <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
-          <Form.Field>
-            <label>Minimum Contribution</label>
-            <Input
-              label="wei"
-              labelPosition="right"
-              value={this.state.minimumContribution}
-              onChange={(event) =>
-                this.setState({ minimumContribution: event.target.value })
-              }
-            />
-          </Form.Field>
-          <Message error header="Oops!" content={this.state.errorMessage} />
-          <Button loading={this.state.loading} primary>
-            Create!
-          </Button>
-        </Form>
+        <div className="page-header">
+          <Link route="/">
+            <a style={{ color: "#93c5fd", fontWeight: 600 }}>
+              <Icon name="arrow left" /> Back to campaigns
+            </a>
+          </Link>
+          <h1 style={{ marginTop: 12 }}>Launch a new campaign</h1>
+          <p className="section-subtitle">
+            Define the minimum contribution for your funding pool and let the
+            community join as trusted approvers.
+          </p>
+        </div>
+        <Segment className="glass-panel">
+          <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
+            <Form.Field>
+              <label>Minimum Contribution</label>
+              <Input
+                label="wei"
+                labelPosition="right"
+                value={this.state.minimumContribution}
+                onChange={(event) =>
+                  this.setState({ minimumContribution: event.target.value })
+                }
+                placeholder="1000"
+              />
+            </Form.Field>
+            <Message error header="Oops!" content={this.state.errorMessage} />
+            <Button loading={this.state.loading} primary icon labelPosition="right">
+              Create Campaign
+              <Icon name="rocket" />
+            </Button>
+          </Form>
+        </Segment>
       </Layout>
     );
   }
